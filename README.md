@@ -1,13 +1,8 @@
 # Ex02 Django ORM Web Application
-## Date: 13-10-2025
+
 
 ## AIM
 To develop a Django application to store and retrieve data from Car Inventory Database using Object Relational Mapping(ORM).
-
-## ENTITY RELATIONSHIP DIAGRAM
-![WhatsApp Image 2025-09-25 at 21 54 11_b42e62d9](https://github.com/user-attachments/assets/67ca3d20-c898-4989-aaa5-db1983234675)
-
-
 
 ## DESIGN STEPS
 
@@ -25,34 +20,33 @@ Execute Django admin and create details for 10 books
 
 ## PROGRAM
 ```
-model.py
+admin.py
+
+from django.contrib import admin
+from .models import Employee,EmployeeAdmin
+admin.site.register(Employee,EmployeeAdmin)
+
+models.py
+
 from django.db import models
 from django.contrib import admin
 
-class Car(models.Model):
-    id = models.IntegerField(primary_key=True)
-    brand = models.CharField(max_length=15)
-    model = models.CharField(max_length=30)
-    year = models.DateField()
-    price = models.IntegerField()
+class Employee (models.Model):
+    eid=models.CharField(max_length=20,help_text="Employee ID")
+    name=models.CharField(max_length=100)
+    salary=models.IntegerField()
+    age=models.IntegerField()
+    email=models.EmailField()
 
-class CarAdmin(admin.ModelAdmin):
-    list_display = ('id','brand','model','year','price')
-```
+class EmployeeAdmin(admin.ModelAdmin):
+    list_display=('eid','name','salary','age','email')
 
-```
-admin.py
-from django.contrib import admin
-from . models import Car, CarAdmin
-
-# Register your models here.
-admin.site.register(Car, CarAdmin)
 ```
 
 
 ## OUTPUT
 
-<img width="1919" height="982" alt="image" src="https://github.com/user-attachments/assets/772d40ba-911b-4f72-a167-06a9ea4d93b7" />
+<img width="1600" height="1000" alt="image" src="https://github.com/user-attachments/assets/45b8d003-11e2-453f-9584-8c6b535b2cf0" />
 
 
 ## RESULT
